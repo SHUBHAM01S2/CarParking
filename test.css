@@ -56,7 +56,7 @@ body {
   background-color: rgb(47, 223, 47);
 }
 
-.slot.sold {
+.slot.booked {
   background-color: rgb(238, 35, 35);
 }
 
@@ -68,12 +68,12 @@ body {
   margin-left: 18px;
 }
 
-.slot:not(.sold):hover {
+.slot:not(.booked):hover {
   cursor: pointer;
   transform: scale(1.2);
 }
 
-.showcase .slot:not(.sold):hover {
+.showcase .slot:not(.booked):hover {
   cursor: default;
   transform: scale(1);
 }
