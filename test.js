@@ -11,18 +11,18 @@ const slots = document.querySelectorAll(".row .slot:not(.sold)");
 const count = document.getElementById("count");
 const total = document.getElementById("total");
 
-// Reference of the movie dropdown
-const movieSelect = document.getElementById("movie");
+// Reference of the parking dropdown
+const parkingSelect = document.getElementById("parking");
 
 /*
 Step 2: Add event listeners
 */
 
-// Event listner for movie selection change
-movieSelect.addEventListener("change", e => {
-  //Update ticket price and store selected movie data
+// Event listner for parking selection change
+parkingSelect.addEventListener("change", e => {
+  //Update ticket price and store selected parking data
   ticketPrice = +e.target.value;
-  setmovieData(e.target.selectedIndex, e.target.value);
+  setparkingData(e.target.selectedIndex, e.target.value);
 
   // Update displayed count and total
   updateSelectedCount();
@@ -64,15 +64,15 @@ function updateSelectedCount() {
   count.innerText = selectedslotsCounts;
   total.innerText = selectedslotsCounts * ticketPrice;
 
-  setmovieData(movieSelect.selectedIndex, movieSelect.value);
+  setparkingData(parkingSelect.selectedIndex, parkingSelect.value);
 }
 
 /*
-Step 4: Define funtion to set selected movie data, in local storage
+Step 4: Define funtion to set selected parking data, in local storage
 */
-function setmovieData(movieIndex, moviePrice) {
-  localStorage.setItem("selectedmovieIndex", movieIndex);
-  localStorage.setItem("selectedmoviePrice", moviePrice);
+function setparkingData(parkingIndex, parkingPrice) {
+  localStorage.setItem("selectedparkingIndex", parkingIndex);
+  localStorage.setItem("selectedparkingPrice", parkingPrice);
 }
 
 /*
@@ -93,12 +93,12 @@ function populateUI() {
     });
   }
 
-  // Get selected movie data from local storage
-  const selectedmovieIndex = localStorage.getItem("selectedmovieIndex");
+  // Get selected parking data from local storage
+  const selectedparkingIndex = localStorage.getItem("selectedparkingIndex");
 
-  // If there's a selected movie index, then set it in the dropdown
-  if (selectedmovieIndex !== null) {
-    movieSelect.selectedIndex = selectedmovieIndex;
+  // If there's a selected parking index, then set it in the dropdown
+  if (selectedparkingIndex !== null) {
+    parkingSelect.selectedIndex = selectedparkingIndex;
   }
 }
 
@@ -108,6 +108,12 @@ Step 6: Initial setup of count, total and UI based on save data
 populateUI();
 
 // Initialize ticket price
-let moviePrice = +movieSelect.value;
+let parkingPrice = +parkingSelect.value;
 
 updateSelectedCount();
+
+let book = document.getElementsByClassName("book_btn");
+function bookParking() {
+  book.style.backgroundColor = rgb(238, 35, 35);
+  console.log("done");
+  }
